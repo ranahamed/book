@@ -1,0 +1,33 @@
+<%provide(:title, 'New')%>
+<h1>NEW BOOK</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  	<%= nested_form_for(@book) do |f| %>
+
+  		<%= render 'shared/error_messages' %>
+
+  		<%=f.label :title%>
+  		<%=f.text_field :title , class: 'form-control'%>
+
+  		<%=f.label :publisher%>
+  		<%=f.text_field :publisher , class: 'form-control'%>
+
+  		<%=f.label :isbn%>
+  		<%=f.text_field :isbn , class: 'form-control'%>
+
+  		<%=f.label :publishing_date%>
+  		<%=f.date_field :publishing_date , class: 'form-control'%>
+
+  		<%= f.nested_fields_for :authors do |ff| %>
+
+  			<%= ff.remove_nested_fields_link %>
+             <%= ff.text_field :name %>
+           
+  		<%end%>
+  		 <%= f.add_nested_fields_link :authors %>
+
+  		<%=f.submit "create new book" ,class: "btn btn-primary" %>
+
+  	<%end%>
+
+</div>
