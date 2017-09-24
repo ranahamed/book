@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
 
-  root 'books#home'
-  get '/new',   to: 'books#new'
+  get 'sessions/new'
+
+  root   'books#home'
+  get    '/home',          to: 'books#home'
+  get    '/new',           to: 'books#new'
+  get    '/login',         to: 'sessions#new'
+  post   '/login',         to: 'sessions#create'
+  delete '/logout',        to: 'sessions#destroy' 
+
 
   
 
